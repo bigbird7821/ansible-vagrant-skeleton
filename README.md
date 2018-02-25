@@ -4,11 +4,13 @@ Table of Contents for ansible-skeleton-vagrant
    * [Table of Contents for skeleton](#table-of-contents-for-skeleton-skeleton)
       * [Design Highlights of the project:](#design-highlights-of-the-project)
       * [Setup instructions](#setup-instructions)
+      * [Comments](#comments)
 
 
 ## Design Highlights of the project:
 * Design decisions are documented beneath the **./doc/adr** using [Lightweight Architecture Decision Records](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records), as used by Thoughtworks.
 * The virtualbox base boxes beneath the **./base\_boxes** directory must be created BEFORE starting up the skeleton cluster beneath **./applications/skeleton** directory.  See the [Setup instructions](#setup-instructions) for more information. 
+* After starting up your cluster, run the **./applications/skeleton/setupSshConnectivity.sh** to enable ssh and scp between your guest and host vms.   See the [Setup instructions](#setup-instructions) for more information. 
 
 ```
 ├── applications
@@ -17,27 +19,15 @@ Table of Contents for ansible-skeleton-vagrant
 │       │   └── dev
 │       │       ├── ansible.cfg
 │       │       └── inventory
-│       │           ├── aaa-group-definitions
-│       │           ├── aaa-machine-definitions
-│       │           ├── group_vars
-│       │           ├── host_vars
-│       │           └── hosts
 │       ├── plays
 │       │   ├── ping.yml
 │       │   └── test.yml
 │       ├── roles
+│       ├── setupSshConnectivity.sh
 │       └── Vagrantfile
 ├── base_boxes
 │   ├── oel6base
-│   │   ├── ansible
-│   │   ├── createNewBaseBox.sh
-│   │   ├── package.box
-│   │   └── Vagrantfile
 │   └── oel6base.skeleton
-│       ├── ansible
-│       ├── createNewBaseBox.sh
-│       ├── package.box
-│       └── Vagrantfile
 ├── common
 │   ├── plays
 │   └── roles
@@ -51,11 +41,6 @@ Table of Contents for ansible-skeleton-vagrant
 │       └── vagrant-base-cleaner
 ├── doc
 │   └── adr
-│       ├── 0001-record-architecture-decisions.md
-│       ├── 0002-separate-the-ansible-skeleton-application-from-the-common-ansible-roles-and-plays.md
-│       ├── 0003-use-ansible-inventory-directory-with-empty-group-definitions.md
-│       ├── 0004-pick-up-the-http-proxy-from-the-environment-and-inject-this-via-the-proxy-role.md
-│       └── 0005-ensure-the-skeleton-application-depends-on-an-oel6-vagrant-basebox.md
 └── README.md
 ```
 
@@ -78,3 +63,5 @@ Table of Contents for ansible-skeleton-vagrant
 
     There should be no error in any of the above.  The test.yml verifies that all skeleton nodes are wired successfully together
 
+## Comments
+* If you wish to ssh or scp, as opposed to simply using "vagrant ssh...", to your guest VMs from your host, then cd to the **./applications/skeleton** directory and type "**. ./setupSshConnectivity.sh**" which will create a special ssh config file and 2 aliases **sshv** and **scpv** that will connect to your vms from the host.  For example:  (1) **sshv machine3** would ssh onto machine3 instead of **vagrant ssh machine3**; (2) **scpv temp.file machine3:/tmp/temp.file** would scp a temp.file from your host to machine3's /tmp directory.
