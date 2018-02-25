@@ -17,7 +17,7 @@
   notify: "restart dnsmasq"
 
   # Note: change of resolv.conf doesn't require a restart but doing it anyway for good measure...
-- name: "Install proper nameservers on consul servers, with Google DNS failover"
+- name: "Ensure all local DNS request first pass through local dnsmasq and then out to external nameserver"
   become: true
   lineinfile:
     dest: /etc/resolv.conf
