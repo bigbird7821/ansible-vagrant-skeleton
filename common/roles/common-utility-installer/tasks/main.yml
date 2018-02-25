@@ -17,4 +17,6 @@
    - tree
    - vim-enhanced
    - xmlstarlet
-   #- yum-fastestmirror
+   - yum-fastestmirror
+   - libselinux-python
+   - expect
