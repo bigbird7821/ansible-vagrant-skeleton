@@ -1,0 +1,9 @@
+---
+# Perform common installations
+- import_playbook: /opt/skeleton/ansible/common/plays/install.yml
+
+# Perform application specific installations
+#- name: Install application specific software
+  #hosts: all
+  #roles:
+    #- consul-1.0-installer 

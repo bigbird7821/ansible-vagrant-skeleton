@@ -1,0 +1,3 @@
+---
+- import_playbook: "/opt/skeleton/ansible/common/roles/dnsmasq-installer/tests/test.yml"
+- import_playbook: "/opt/skeleton/ansible/common/roles/dnsmasq-configurator/tests/test.yml"

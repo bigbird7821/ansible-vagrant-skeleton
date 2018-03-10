@@ -9,6 +9,7 @@ Accepted
 ## Context
 
 There are a number of problems with the existing implementation:  
+
 * The skeleton application depends on a non-existant OEL 6 Redhat base box, only one that I have defined on my laptop.
 * Booting up the skeleton application from scratch requires an unacceptable length of time for all the necessary software packages to be installed, restricting the ease of development
 

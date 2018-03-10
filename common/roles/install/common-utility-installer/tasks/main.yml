@@ -1,0 +1,30 @@
+---
+# nothing works without the http_proxy correctly set
+- include_role: {role: configure/proxy-configurator}
+# without the EPEL repository, very few useful tools can be installed
+- include_role: {role: install/epel-6.8-repository-installer}
+
+- name: Install common utility packages like vim
+  become: true
+  yum:
+    name: "{{item}}"
+    state: installed
+  with_items:
+   - ack
+   - bind-utils
+   - dos2unix
+   - git
+   - htop
+   - jq
+   - multitail
+   - nc
+   - tar
+   - tree
+   - vim-enhanced
+   - xmlstarlet
+   #- yum-fastestmirror
+   - libselinux-python
+   - expect
+
+# these are fundamental to doing testing
+- include_role: {role: install/dnsmasq-installer }

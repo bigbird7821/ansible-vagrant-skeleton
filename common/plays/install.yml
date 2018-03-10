@@ -1,0 +1,7 @@
+---
+- name: Install all common software
+  hosts: all
+  roles:
+    - install/common-utility-installer
+
+- import_playbook: ./_pound/install.yml

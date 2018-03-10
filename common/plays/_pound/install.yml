@@ -1,0 +1,10 @@
+---
+- name: Install Pound servers
+  hosts: pound
+  roles:
+    - install/pound-installer
+
+- name: Install Apache servers
+  hosts: apache
+  roles:
+    - install/apache-installer

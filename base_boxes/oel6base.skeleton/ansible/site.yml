@@ -7,8 +7,6 @@
   become_user: root
   roles:
     - common-utility-installer
-    - dnsmasq-installer
-    - dnsmasq-configurator
     - vagrant-base-cleaner
 
 

@@ -1,0 +1,16 @@
+- name: root/dnsmasq-installer tests
+  hosts: all
+  gather_facts: true
+  vars:
+    myDig: |
+      set -x
+      {# Generate the local dnsmasq mapping of hostnames to ip's #}
+      {% for host in groups['all'] %}
+      dig {{hostvars[host].ansible_hostname}} | grep "ANSWER SECTION:"
+      {% endfor %}
+  tasks:
+    - include_role: {name: function/ansible-test-runner}
+      vars:
+        _test_case_title: Every host should be able to dig every other host
+        _should_debug_test: false
+        _bash_test_code: "{{myDig}}"

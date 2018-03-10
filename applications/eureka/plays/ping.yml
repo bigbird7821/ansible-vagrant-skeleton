@@ -1,0 +1,11 @@
+---
+# Perform common installation and configuration
+- import_playbook: /opt/skeleton/ansible/common/plays/install.yml
+- import_playbook: /opt/skeleton/ansible/common/plays/configure.yml
+- import_playbook: /opt/skeleton/ansible/common/plays/test.yml
+
+- name: Test connectivity
+  hosts: all
+  tasks:
+    - name: Ping
+      ping:

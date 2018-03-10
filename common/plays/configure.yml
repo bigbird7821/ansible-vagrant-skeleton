@@ -1,0 +1,6 @@
+- name: Configure all common software
+  hosts: all
+  roles:
+    - configure/dnsmasq-configurator
+
+- import_playbook: ./_pound/configure.yml

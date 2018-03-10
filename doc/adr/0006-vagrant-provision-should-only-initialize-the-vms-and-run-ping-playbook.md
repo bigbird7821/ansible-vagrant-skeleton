@@ -9,6 +9,7 @@ Accepted
 ## Context
 
 There are a number of problems currently because we depend on varant to run the complete ansible setup suite:
+
 * Wasted time 
 * Long execution for small code tests
 * Developer becomes depended on vagrant rather than learning ansible

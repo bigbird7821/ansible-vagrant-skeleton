@@ -1,0 +1,9 @@
+---
+- import_playbook: install.yml
+- import_playbook: configure.yml
+
+- name: Test
+  hosts: all
+  tasks:
+    - name: Ping
+      ping:

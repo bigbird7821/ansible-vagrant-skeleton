@@ -1,0 +1,4 @@
+{# Generate the local dnsmasq mapping of hostnames to ip's #}
+{% for host in groups['all'] %}
+address=/{{hostvars[host].ansible_hostname}}/{{host}}
+{% endfor %}

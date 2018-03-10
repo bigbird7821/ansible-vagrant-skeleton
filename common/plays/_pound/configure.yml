@@ -1,0 +1,11 @@
+- name: Configure pound load balancer
+  hosts: pound
+  roles:
+    - configure/pound-configurator
+
+- name: Configure apache backend servers
+  hosts: apache
+  roles:
+    - configure/apache-configurator
+      
+ 

@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-When working with more complex infrastructures, there is a chance that the inventory groupings can also become complex.  
+When working with more complex infrastructures, there is a chance that the inventory groupings can also become complex.
 
 ## Decision
 

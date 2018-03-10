@@ -1,0 +1,9 @@
+---
+# Perform common configuration
+- import_playbook: /opt/skeleton/ansible/common/plays/configure.yml
+
+# Perform application specific configuration
+# - name: Configure Hashistack
+#   hosts: hashistack
+#   roles:
+#     - dnsmasq-consul-configurator

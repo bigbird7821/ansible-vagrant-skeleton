@@ -1,0 +1,5 @@
+# Add all your specific group inventory here, e.g.,
+[pound]
+192.168.82.21
+[apache]
+192.168.82.22

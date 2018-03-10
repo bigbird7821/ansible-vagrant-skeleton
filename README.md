@@ -1,7 +1,7 @@
 Table of Contents for ansible-skeleton-vagrant
 =================
 
-   * [Table of Contents for skeleton](#table-of-contents-for-skeleton-skeleton)
+* [Table of Contents for skeleton](#table-of-contents-for-skeleton-skeleton)
       * [Design Highlights of the project:](#design-highlights-of-the-project)
       * [Setup instructions](#setup-instructions)
       * [Comments](#comments)
@@ -44,24 +44,24 @@ Table of Contents for ansible-skeleton-vagrant
 └── README.md
 ```
 
-## Setup instructions
-* Create the vagrant base boxes beneath **./base\_boxes**:
-    * Go to **./base\_boxes/oel6base**
-    * vagrant up
-    * Run the createNewBasebox.sh as soon as the oel6base has completed without error.  This script will create a local vagrant base box called "oel6base" that subsequent "vagrant up" actions will use.  
-    * Repeat the above steps for each of the other base boxes:  **./base\_boxes/oel6base-skeleton**
+Setup instructions
+--------
 
-* Only after the base_boxes have all been created, then 
-    * Go to **./applications/skeleton**
-    * vagrant up --provision
+For example, to startup the skeleton test environment:
 
-* SSH onto machine872 the ansible controller:
-    * vagrant ssh machine872
-    * cd /vagrant/plays
-    * ansible-playbook --diff -vv ping.yml
-    * ansible-playbook test.yml
+* Only after the base_boxes have all been created, then:
+  * Go to **./applications/skeleton**
+  * vagrant up --provision
 
-    There should be no error in any of the above.  The test.yml verifies that all skeleton nodes are wired successfully together
+* SSH onto the ansible controller, which is always the last machine in the series.  For example, if 5 VMs are present, i.e., machine811..machine815, then the machine815 is the ansible controller; therefore:
+  * vagrant ssh machine815
+  * cd /vagrant/plays
+  * ansible-playbook --diff -vv configure.yml
+  * ansible-playbook test.yml
 
-## Comments
+There should be no error in any of the above.  The test.yml verifies that all skeleton nodes are wired successfully together
+
+Comments
+--------
 * If you wish to ssh or scp, as opposed to simply using "vagrant ssh...", to your guest VMs from your host, then cd to the **./applications/skeleton** directory and type "**. ./setupSshConnectivity.sh**" which will create a special ssh config file and 2 aliases **sshv** and **scpv** that will connect to your vms from the host.  For example:  (1) **sshv machine3** would ssh onto machine3 instead of **vagrant ssh machine3**; (2) **scpv temp.file machine3:/tmp/temp.file** would scp a temp.file from your host to machine3's /tmp directory.
+

@@ -1,0 +1,6 @@
+---
+- name: Install pound
+  become: true
+  yum:
+    name: Pound
+    state: installed
