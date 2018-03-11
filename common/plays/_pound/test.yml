@@ -1,5 +1,16 @@
 ---
 - name: " "
+  hosts: pound
+  gather_facts: false
+  tasks:
+    - include_role: {name: function/ansible-test-runner}
+      vars:
+        _test_case_title: pound load balancer should be installed
+        _should_debug_test: false
+        _bash_test_code: |
+          rpm -qa | grep Pound
+
+- name: " "
   hosts: all
   become: true
   gather_facts: false
@@ -13,7 +24,7 @@
 
     - include_role: {name: function/ansible-test-runner}
       vars:
-        _test_case_title: Linux kernal should be 4.1.12.x
+        _test_case_title: all hosts should be at linux kernal 4.1.12.x
         _should_debug_test: false
         _bash_test_code: |
           set -x
@@ -23,7 +34,7 @@
 
     - include_role: {name: function/ansible-test-runner}
       vars:
-        _test_case_title: Load Balancer should be able to connect to Apache servers
+        _test_case_title: all servers should be able to use pound load balancer
         _should_debug_test: false
         _bash_test_code: |
           set -x
@@ -32,14 +43,3 @@
           expected="hello"
           echo "${actual}" | grep "${expected}"
           {% endfor %}
-
-- name: " "
-  hosts: pound
-  gather_facts: false
-  tasks:
-    - include_role: {name: function/ansible-test-runner}
-      vars:
-        _test_case_title: ensure pound exists
-        _should_debug_test: false
-        _bash_test_code: |
-          rpm -qa | grep Pound

@@ -11,6 +11,6 @@
   tasks:
     - include_role: {name: function/ansible-test-runner}
       vars:
-        _test_case_title: Every host should be able to dig every other host
+        _test_case_title: every host should be able to dig every other host
         _should_debug_test: false
         _bash_test_code: "{{myDig}}"

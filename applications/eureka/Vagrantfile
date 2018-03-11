@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
 
                 # ensure that all private keys are stored locally on each VM
                 machine.vm.provision "shell", path: "scripts/doCopyOfSshKeys.sh"
+                machine.vm.provision "shell", path: "scripts/doCopyOfCommonSettingsToAllApps.sh"
 
                 # ensure the ANSIBLE_CONFIG is set so that ansible-playbook can be easily run from within the controller
                 machine.vm.provision "shell",
