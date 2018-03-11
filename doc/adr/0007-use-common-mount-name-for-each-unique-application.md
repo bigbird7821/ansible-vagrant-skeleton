@@ -14,7 +14,7 @@ Given that:
 
 ![alt text](screenshots/0007-many-applications-under-one-skeleton.PNG "Many applications under one skeleton")
 
-* it is important to make re-use of roles easy.  For example, I might write a test in the consul application that also want to re-use in the smartstack one.  
+* it is important to make re-use of roles easy.  For example, I might write a test in the consul application that also want to re-use in the smartstack one.
 
 Therefore, the following decision was made
 
