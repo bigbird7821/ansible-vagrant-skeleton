@@ -25,3 +25,5 @@ The advantage of the above is that specific application environments are less li
 * common tests work for all environments
 * if common settings are changed then they are easily detected by GIT or SVN because the local application versions also change
 * common setting are not only translated to the application environments within vagrant and virtualbox, but they are also reflected in the test and production evironments as well.
+
+Another consequence is that there is now not just 1 skeleton application but 2.  The reason for this is that to confirm that your common settings work across all application environments, you need at least 2 applications to spin up and verify a successful build.
