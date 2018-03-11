@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     # Add shared roles and plays
     config.vm.synced_folder "../../common/roles", "/opt/skeleton/ansible/common/roles"
     config.vm.synced_folder "../../common/plays", "/opt/skeleton/ansible/common/plays"
+    config.vm.synced_folder "../../common/environments", "/opt/skeleton/ansible/common/environments"
     config.vm.synced_folder "./roles", "/opt/skeleton/ansible/application/roles"
 
     # Create the initial ansible inventory of VMs
@@ -84,7 +85,7 @@ def writeAnsibleInventoryFor(_thisNumberOfVms = 3, comment = "", _thisSubnetBase
 
     # setup the ansible inventory file
     Dir.mkdir(ansible_inventory_dir) unless Dir.exist?(ansible_inventory_dir)
-    File.open("#{ansible_inventory_dir}/aaa-machine-definitions" ,'w') do |f|
+    File.open("#{ansible_inventory_dir}/020_application_machine_definitions" ,'w') do |f|
         f.write "#{code.join("\n")}\n"
     end
 end

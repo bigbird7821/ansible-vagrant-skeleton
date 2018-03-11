@@ -1,0 +1,6 @@
+# WARNING!!!!! This definition file is common to ALL applications
+# If you want to make changes to this file, 
+# ONLY make changesto the one at 
+# ./common/environments/inventory/000_common_inventory_definitions
+[pound]
+[apache]

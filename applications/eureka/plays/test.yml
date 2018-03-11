@@ -2,5 +2,17 @@
 # Run common infrastructure tests
 - import_playbook: "/opt/skeleton/ansible/common/plays/test.yml"
 
-# Run application specific infrastructure tests
+#################################################
+# RUN APPLICATION SPECIFIC INFRASTRUCTURE TESTS #
+#################################################
+# FOR EXAMPLE: 
+
+# (1) check that all application inventory groups like [docker] or [hashistack] are defined
+# - include_role: {name: function/verify-whether-groups-are-defined}
+#   vars:
+#     _list_of_mandetory_inventory_groups:
+#       - "docker"
+#       - "hashistack"
+
+# (2) import a specific playbook test suite
 #- import_playbook: "/opt/skeleton/ansible/application/roles/consul-1.0-installer/tests/test.yml"

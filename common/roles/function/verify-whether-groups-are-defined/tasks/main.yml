@@ -1,0 +1,25 @@
+---
+################################################################################
+#               Test whether the input parameters are valid                    #
+################################################################################
+# using "fail" instead of "assert" because assert clutters the output with debug
+- name: " "
+  include_tasks: _debug_if_invalid_input_parameters.yml
+  when: (_list_of_mandetory_inventory_groups is undefined) or (_list_of_mandetory_inventory_groups is none)
+
+# test that all common inventory groups are defined; only run once on one server
+- include_role: {name: function/ansible-test-runner}
+  run_once: true
+  vars:
+    _test_case_title: "group [{{item}}] MUST have at least one valid assigned IP"
+    _should_debug_test: false
+    _bash_test_code: |
+      set -x
+      # fail if nothing defined in the ansible inventory group
+      actualNumberOfIpsInThisGroup={{groups[item] | default({}) | length}}
+      (( ${actualNumberOfIpsInThisGroup} == 0 )) && echo "{{_test_case_title}}" && exit 1
+      
+      # otherwise pass
+      exit 0
+  with_items: 
+    - "{{_list_of_mandetory_inventory_groups}}"

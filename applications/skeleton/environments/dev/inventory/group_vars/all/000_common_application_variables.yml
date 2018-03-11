@@ -1,0 +1,11 @@
+# WARNING!!!!! This definition file is common to ALL applications
+# If you want to make changes to this file, 
+# ONLY make changesto the one at 
+# ./common/environments/inventory/group_vars/all/000_common_application_variables
+proxy_configurator_http_proxy: "{{ lookup('env','http_proxy') }}"
+proxy_configurator_no_proxy:  >
+  localhost, 127.0.0.1, 
+  {{groups['all'] | map('extract', hostvars, 'ansible_fqdn') | list | join(', ')}},
+  {{groups['all'] | join(', ')}}
+proxy_username:
+proxy_password:

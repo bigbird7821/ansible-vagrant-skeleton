@@ -4,31 +4,12 @@
   become: true
   gather_facts: false
   tasks:
-    - include_role: {name: function/ansible-test-runner}
+    # test that all common inventory groups are defined; only run once on one server
+    - include_role: {name: function/verify-whether-groups-are-defined}
       vars:
-        _test_case_title: "[pound] group MUST (1) be defined in the ansible inventory and (2) have at least one valid assigned IP"
-        _should_debug_test: false
-        _bash_test_code: |
-          set -x
-          # fail if nothing defined in the ansible [pound] inventory group
-          numberOfIpsInPoundGroup={{groups['pound'] | length | default(0)}}
-          (( ${numberOfIpsInPoundGroup} == 0 )) && echo "{{_test_case_title}}" && exit 1
-          
-          # otherwise pass
-          exit 0
-
-    - include_role: {name: function/ansible-test-runner}
-      vars:
-        _test_case_title: "[apache] group MUST (1) be defined in the ansible inventory and (2) have at least one valid assigned IP"
-        _should_debug_test: false
-        _bash_test_code: |
-          set -x
-          # fail if nothing defined in the ansible [pound] inventory group
-          numberOfIpsInPoundGroup={{groups['apache'] | length | default(0)}}
-          (( ${numberOfIpsInPoundGroup} == 0 )) && echo "{{_test_case_title}}" && exit 1
-          
-          # otherwise pass
-          exit 0
+        _list_of_mandetory_inventory_groups:
+          - "pound"
+          - "apache"
 
     - include_role: {name: function/ansible-test-runner}
       vars:
