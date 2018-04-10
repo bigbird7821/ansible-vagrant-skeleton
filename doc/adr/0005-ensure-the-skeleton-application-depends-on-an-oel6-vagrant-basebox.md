@@ -8,19 +8,14 @@ Accepted
 
 ## Context
 
-There are a number of problems with the existing implementation:  
+To minimize the possible difference between the ansible skeleton development environment and test or production, the development operating system should be as close as possible to the specification of test and live.  This implementation assumes an OEL6.9 variant.
 
-* The skeleton application depends on a non-existant OEL 6 Redhat base box, only one that I have defined on my laptop.
-* Booting up the skeleton application from scratch requires an unacceptable length of time for all the necessary software packages to be installed, restricting the ease of development
-
-As a result of the above problems, the following decision was made
+However, there is a problem with using the raw OEL6.9 from Oracle: Booting up the skeleton application from scratch requires an unacceptable length of time for all the necessary software packages to be installed, restricting the ease of development.  In other words, if I want to destroy and rebuild my boxes again, then depending on the number of VMs it can take 20 to 30 minutes to restart.
 
 ## Decision
 
-A set of vagrant basebox's are now built from a publicly available OEL 6 Redhat variant.  The first one that must be created is "oel6base" and is created from the publicly available Oracle base box.  After this several other base boxes must be created all located beneath the ./base_boxes/oel6base directory. 
-
-The consequences of this are as follows:
+Therefore, a set of vagrant basebox's are now included beneath **./base_boxes**.  For example, **./base_boxes/oel6base** will take the raw OEL6.9 base box from oracle and create a new "oel6base" virtualbox base.  **./base_boxes/oel6base.skeleton** will take extend the new "oel6base" with all the extra software installations that your application development demands and create a new virtualbox base called "oel6base/skeleton".
 
 ## Consequences
 
-Users of the skeleton must create their own base boxes before running the skeleton.  For example, if you are developing an ELK application then you will first need to create all the base bases.  After this you will probably want to create a new baseboxes that include all your new software.  The new skeleton now includes all that is needed to create new base boxes.
+Consequently, restarting a 5 VM environment from scratch has been reduced from 30 minutes to just over 5.  This is a much more acceptable time to rebuild your model environment.

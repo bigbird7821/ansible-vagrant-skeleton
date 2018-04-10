@@ -12,13 +12,11 @@ When working behind a company firewall, the http_proxy usually needs to be set i
 
 ## Decision
 
-Extract the http_proxy from the local terminal environment, if it exists, rather than hard-code it.  The following code is an example of how this is done:
+Therefore, extract the http_proxy from the local terminal environment, if it exists, rather than hard-code it.  The following code is an example of how this is done:
 
 ```yaml
 proxy_configurator_http_proxy: "{{ lookup('env','http_proxy') }}"
 ```
-
-The consequence of this is as follows.
 
 ## Consequences
 

@@ -8,13 +8,11 @@ Accepted
 
 ## Context
 
-As common functionality is refactored out of specific application roles, then so should there be no duplication of the plays that include and test these roles.  
-
-Therfore the following decision was made:
+As common functionality is refactored out of specific application roles, then so should there be no duplication of the plays that include and test these roles.
 
 ## Decision
 
-There should be a common set of install.yml, configure.yml, and test.yml plays.  For example, **./applications/eureka/plays/configure.yml** will first reference the **./applicaitons/common/plays/configure.yml**, and then do its own specific configuration actions.
+Therfore, a common set of install.yml, configure.yml, and test.yml playbooks should contain all common setup and testing.  For example, **./applications/skeleton/plays/configure.yml** will first reference the **./applicaitons/common/plays/configure.yml**, and then do its own specific configuration actions.
 
 ```yaml
 ---

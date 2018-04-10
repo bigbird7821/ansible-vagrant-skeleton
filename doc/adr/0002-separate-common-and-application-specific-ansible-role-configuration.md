@@ -12,11 +12,8 @@ Although software tools like consul, dnsmasq, and kibana are useful toolsets for
 
 ## Decision
 
-Because of the above needs, the following decision was made: Purely common ansible role configuration will live in the **./common/roles** directory; whereas application specific configuration will live in application specific role locations, e.g., **./applications/rsqe/roles** or **./applications/gsp/roles**.
+Therefore, purely common ansible role configuration will live in the **./common/roles** directory; whereas application specific configuration will live in application specific role locations, e.g., **./applications/skeleton/roles**, **./applications/rsqe/roles** or **./applications/gsp/roles**.
 
 ## Consequences
 
-The consequeces of this decision are as follows:
-
-* Ansible configuration will be less congested with unnecessary code.  For example, rsqe kibana visualizations will now (1) not be deployed to the gsp kibana and (2) not clutter the gsp code base.
-* It's easier to follow the KISS principle as the ansible configuration can be very specifically targetted to small achievable units.
+Consequently, ansible configuration will be less congested with unnecessary code.  For example now, yyy-app kibana visualizations will not be deployed to the xxx-app kibana and not clutter the xxx-app code base.
