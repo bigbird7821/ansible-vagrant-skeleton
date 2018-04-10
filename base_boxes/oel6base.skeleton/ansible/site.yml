@@ -1,12 +1,14 @@
 ---
+# Perform common installation, configuration, infrastructure testing, and ping testing
+- import_playbook: /opt/skeleton/ansible/common/plays/install.yml
+
 # Keep this do-nothing task as this is required for vagrant provisioning
 # NOTE: proxy then EPEL should be setup before anything else!
-- name: site.yml | All roles
+- name: Clean and create the base box
   hosts: all
   become: true
   become_user: root
   roles:
-    - common-utility-installer
     - vagrant-base-cleaner
 
 

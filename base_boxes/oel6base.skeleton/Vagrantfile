@@ -7,8 +7,10 @@ Vagrant.configure("2") do |config|
 	# Without this set to false this box WILL NOT work as a base box
 	config.ssh.insert_key = false
 
+    # Add shared roles and plays
 	config.vm.synced_folder "../../common/roles", "/opt/skeleton/ansible/common/roles"
 	config.vm.synced_folder "../../common/plays", "/opt/skeleton/ansible/common/plays"
+    config.vm.synced_folder "../../common/environments", "/opt/skeleton/ansible/common/environments"
 	config.vm.synced_folder "../../applications/skeleton/roles", "/opt/skeleton/ansible/application/roles"
 
 	# Stop the evil VirtualBox Guest Addition auto update
