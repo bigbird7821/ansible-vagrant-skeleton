@@ -1,11 +1,5 @@
-Table of Contents for ansible-skeleton-vagrant
+ansible-skeleton-vagrant
 =================
-
-* [Table of Contents for skeleton](#table-of-contents-for-skeleton-skeleton)
-      * [Design Highlights of the project:](#design-highlights-of-the-project)
-      * [Setup instructions](#setup-instructions)
-      * [Comments](#comments)
-
 
 ## Design Highlights of the project:
 * Design decisions are documented beneath the **./doc/adr** using [Lightweight Architecture Decision Records](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records), as used by Thoughtworks.
